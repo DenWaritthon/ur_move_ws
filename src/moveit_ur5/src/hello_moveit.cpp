@@ -43,9 +43,9 @@ int main(int argc, char * argv[])
 
   // Set a target Pose
   geometry_msgs::msg::Pose target_pose;
-  target_pose.position.x = current_pose.position.x;
+  target_pose.position.x = current_pose.position.x + 0.1;
   target_pose.position.y = current_pose.position.y;
-  target_pose.position.z = current_pose.position.z + 0.2;
+  target_pose.position.z = current_pose.position.z;
   target_pose.orientation.x = current_pose.orientation.x;
   target_pose.orientation.y = current_pose.orientation.y;
   target_pose.orientation.z = current_pose.orientation.z;
@@ -62,13 +62,6 @@ int main(int argc, char * argv[])
   target_pose.orientation.y,
   target_pose.orientation.z,
   current_pose.orientation.w);
-
-  // // Create a plan to that target pose
-  // auto const [success, plan] = [&move_group_interface]{
-  //   moveit::planning_interface::MoveGroupInterface::Plan msg;
-  //   auto const ok = static_cast<bool>(move_group_interface.plan(msg));
-  //   return std::make_pair(ok, msg);
-  // }();
 
   // Create a Cartesian path
   std::vector<geometry_msgs::msg::Pose> waypoints;
@@ -93,7 +86,7 @@ int main(int argc, char * argv[])
     RCLCPP_ERROR(logger, "Planing failed!");
   }
       
-  RCLCPP_INFO(logger, "Done!");
+  RCLCPP_INFO(logger, "Move Done!");
     // Get current pose
     geometry_msgs::msg::Pose end_pose = move_group_interface.getCurrentPose().pose;
 
