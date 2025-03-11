@@ -8,6 +8,7 @@ from rclpy.node import Node
 class DummyNode(Node):
     def __init__(self):
         super().__init__('dummy_node')
+        self.get_logger().info('Dummy node started')
 
 def main(args=None):
     rclpy.init(args=args)

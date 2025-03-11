@@ -21,6 +21,7 @@ find_package(rclcpp REQUIRED)			# cpp (optional)
 find_package(ament_cmake_python REQUIRED)   	# python (optional)
 find_package(rclpy REQUIRED)                	# python (optional)
 find_package(moveit_ros_planning_interface REQUIRED)  # cpp (required)
+find_package(moveit_visual_tools REQUIRED) 	# cpp (optional)
 ######################################################
 
 # Install Python Module
@@ -38,9 +39,11 @@ include_directories(include)
 
 # Create Cpp executable
 add_executable(hello_moveit src/hello_moveit.cpp)
+# ament_target_dependencies(hello_moveit moveit_ros_planning_interface moveit_visual_tools rclcpp)
 ament_target_dependencies(
   hello_moveit
   "moveit_ros_planning_interface"
+  "moveit_visual_tools"
   "rclcpp"
 )
 
