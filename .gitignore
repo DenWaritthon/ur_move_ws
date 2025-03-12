@@ -1,0 +1,12 @@
+# Build directories
+build/
+install/
+log/
+
+# Other ROS2/colcon generated files
+*.pyc
+__pycache__/
+*.log
+
+# Optionally, if you use workspace overlay files or temporary files
+*.tmp
