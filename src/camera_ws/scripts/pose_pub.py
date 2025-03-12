@@ -7,7 +7,7 @@ import numpy as np
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import Pose
 from cv_bridge import CvBridge
-from target_interfaces.srv import DetectionTarget  
+from target_interfaces.srv import GetTarget  
 class RedBoxDetectorService(Node):
     def __init__(self):
         super().__init__('red_box_detector_service')
@@ -24,7 +24,7 @@ class RedBoxDetectorService(Node):
         )
 
         # Create a service server
-        self.srv = self.create_service(DetectionTarget, '/detect_red_box', self.detect_red_box_callback)
+        self.srv = self.create_service(GetTarget, '/get_target', self.detect_red_box_callback)
 
         self.get_logger().info('Red Box Detector Service has started')
 
@@ -50,12 +50,12 @@ class RedBoxDetectorService(Node):
         return self.latest_image
 
 
-    def detect_red_box_callback(self, request, response):
+    def detect_red_box_callback(self, request:GetTarget.Request, response:GetTarget.Response):
         """
         Service callback function that processes an image and returns 
         the detected position of the red box.
         """
-        if not request.detect:
+        if not request.call:
             self.get_logger().info("Detection request received but flag is False.")
             response.target = Pose()  # Return default Pose (0,0,0)
             return response
@@ -83,10 +83,12 @@ class RedBoxDetectorService(Node):
         mask_red = mask_red1 + mask_red2
 
         # Find the red box position
-        X, Y = self.find_box_position(mask_red)
+        Y, X = self.find_box_position(mask_red)
+        X = (X * -1) + 0.55
+        Y = (Y * -1)
 
         if X is not None and Y is not None:
-            response.target.position.x = X
+            response.target.position.x = X 
             response.target.position.y = Y
             response.target.position.z = 0.0
             response.target.orientation.w = 1.0  # No rotation
@@ -110,8 +112,8 @@ class RedBoxDetectorService(Node):
                     v = int(M["m01"] / M["m00"])
 
                     # Convert pixel coordinates to world coordinates
-                    X = round((u / 640) * 1.2 - 0.6, 2)
-                    Y = round((v / 640) * 1.2 - 0.6, 2)
+                    X = round((u / 640) * 0.5 - 0.25, 2)
+                    Y = round((v / 640) * 0.5 - 0.25, 2)
                     return X, Y
 
         return None, None  # No red box found

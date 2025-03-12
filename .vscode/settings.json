@@ -1,0 +1,16 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/tang/ros2_exam/install/target_interfaces/local/lib/python3.10/dist-packages",
+        "/home/tang/ros2_exam/install/moveit_ur5/local/lib/python3.10/dist-packages",
+        "/home/tang/ros2_exam/install/camera_ws/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/tang/ros2_exam/install/target_interfaces/local/lib/python3.10/dist-packages",
+        "/home/tang/ros2_exam/install/moveit_ur5/local/lib/python3.10/dist-packages",
+        "/home/tang/ros2_exam/install/camera_ws/local/lib/python3.10/dist-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
