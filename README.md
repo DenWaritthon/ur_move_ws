@@ -23,11 +23,11 @@ Move real UR5 Robot using ROS2 Humble.
 
 ![Dummy Environment Detail](<pictures/Dummy Environment Detail.png>)
 
-Create Dummy Environment for simulate box on pallet for UR5 Robot pickup position and detection centroid of box for set pick target position to move UR5 Robot. In this project using Contour Detection algorithm to detection box and set taerget position relate to detail in picture.
+Create Dummy Environment for simulate box on pallet for UR5 Robot pickup position and detection centroid of the box for set pick target position to move UR5 Robot. In this project using Contour Detection algorithm to detect box and set target position relate to detail in picture.
 
 **UR5 Path Planning and Execute Move UR5**
 
-Using Universal_Robots_ROS2_Driver for connect UR5 Robot to ROS2 systerm and Using MoveIt package for create path of UR5 Robot and execute path to move real UR5 Robot using `MoveGroupInterface`.
+Using Universal_Robots_ROS2_Driver for connect UR5 Robot to ROS2 system and Using MoveIt package for create path of UR5 Robot and execute path to move real UR5 Robot using `MoveGroupInterface`.
 
 ## Network setup UR5 Robot
 ### Setup UR5
@@ -55,8 +55,8 @@ PING 192.168.1.102 (192.168.1.102) 56(84) bytes of data.
 64 bytes from 192.168.1.102: icmp_seq=2 ttl=64 time=0.178 ms
 64 bytes from 192.168.1.102: icmp_seq=3 ttl=64 time=0.183 ms
 ```
-### Setup UR5 EXternal Control
-In UR5 program insert EXternal Control and setup in Installation -> External Control
+### Setup UR5 External Control
+In UR5 program insert External Control and setup in Installation -> External Control
 ```
 Host IP: 192.168.1.101 # Using PC IP address
 Custom port: 50002 # Default in Driver
@@ -83,7 +83,7 @@ Install project from this GitHub
 ```bash
 git clone https://github.com/DenWaritthon/ur_move_ws.git
 ```
-Build and Source worckspace
+Build and Source workspace
 
 ```bash
 cd ur_move_ws/
@@ -100,7 +100,7 @@ echo "source ~/ur_move_ws/install/setup.bash" >> ~/.bashrc
 ```bash
 ros2 launch ur_robot_driver ur_control.launch.py ur_type:=ur5 launch_rviz:=true robot_ip:=192.168.1.102
 ```
-2. Run EXternal Control Program In Teach Pendant if successful output in terminal is.
+2. Run External Control Program In Teach Pendant if successful output in terminal is.
 ```bash
 # Output
 [ur_ros2_control_node-1] [INFO] [1741780162.100902189] [UR_Client_Library:]: Robot connected to reverse interface. Ready to receive control commands.
@@ -117,11 +117,11 @@ ros2 run ur5_moveit ur5_moveit
 ```bash
 ros2 launch camera_detection gazebo.launch.py
 ```
-6. Run Canmera detection node for detection position of dummy box.
+6. Run Canmera detection node for detect position of dummy box.
 ```bash
 ros2 run camera_detection camera_detection.py
 ```
-7. Run Target management node for management get target and set target for control UR5 Robot.
+7. Run Target management node for manage to get target and set target for control UR5 Robot.
 ```bash
 ros2 run ur5_management target_management.py
 ```
@@ -129,7 +129,7 @@ ros2 run ur5_management target_management.py
 ```bash
 ros2 service call /start target_interfaces/srv/Start "start: true"
 ```
-9. Can move Red box in gazebo to chang pick target position and call `/start` service again
+9. Can move Red box in gazebo to change pick target position and call `/start` service again
 ```bash
 ros2 service call /start target_interfaces/srv/Start "start: true"
 ```
@@ -138,8 +138,8 @@ ros2 service call /start target_interfaces/srv/Start "start: true"
 **Click to watch VDO**
 
 ## Future plan
-- Deverlop showing path line before execute UR5 Robot move.
-- Controll movement speed and acceleration of UR5 Robot.
+- Develop showing path line before execute UR5 Robot move.
+- Control movement speed and acceleration of UR5 Robot.
 - Change Dummy Environment for camera detection pick target position in gazebo to use real camera at UR5 Robot end effector.
 - Add safety in work process.
 
