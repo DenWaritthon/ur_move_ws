@@ -90,6 +90,10 @@ cd ur_move_ws/
 colcon build
 source install/setup.bash
 ```
+Add `source ~/ur_move_ws/install/setup.bash` to `.bashrc` file.
+```bash
+echo "source ~/ur_move_ws/install/setup.bash" >> ~/.bashrc
+```
 ### How to Use this project
 
 1. launch UR Robot Driver for connect UR5 Robot.
