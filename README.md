@@ -2,6 +2,11 @@
 
 ## Pre-Requirement
 - ROS2 Humble
+- Gazebo ROS2 Package
+  ```bash
+  sudo apt-get install ros-humble-ros-gz
+  sudo apt install ros-humble-gazebo-ros-pkgs
+  ```
 - Universal_Robots_ROS2_Driver 
   ```bash
   sudo apt-get install ros-humble-ur
@@ -54,3 +59,17 @@ if successful output is
 ```
 ![UR5 Rviz](<pictures/Testing UR5 using Universal_Robots_ROS2_Driver.png>)
 **Robot position in Rviz is related to Real UR5 Robot.**
+
+## Using Project
+
+### Install Project
+Install project from this GitHub 
+
+```bash
+git clone https://github.com/DenWaritthon/ur_move_ws.git
+```
+
+## Developer Member
+Waritthon Kongnoo 65340500050\
+Pongpat Wongkamhaengharn 67340700402
+
